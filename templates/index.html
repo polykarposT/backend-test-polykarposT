@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block body_block %}
+<div class="p-3" style="box-shadow: 2px 5px 8px #888888;">
+    <h1 class="text-center pt-3" style="color:#ff9018">Companies</h1>
+    <br>
+    <a href="{% url 'info' %}" class="btn btn-outline-warning ml-2">Get company info</a>
+    {% if msg%}
+    <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+        {{ msg }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    <table class="table mt-2">
+        <thead style="background-color: #ff9018; color:#ffffff">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Display name</th>
+                <th scope="col">Address detail</th>
+                <th scope="col">City name</th>
+                <th scope="col">Region name</th>
+                <th scope="col">Zip code</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for company in companies %}
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ company.display_name }}</td>
+                <td>{{ company.address_detail }}</td>
+                <td>{{ company.city_name }}</td>
+                <td>{{ company.region_name }}</td>
+                <td>{{ company.zip_code }}</td>
+                <td><a href="{% url 'company_info' company_id=company.pk %}" class="btn btn-warning"
+                        style="color: #ffffff">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block body_block_2 %}
+<div class="card m-3" style="width: 18rem; box-shadow: 2px 5px 8px #888888;">
+    <div class="card-body">
+        <h1 class="text-center" style="color:#ff9018">Company</h1>
+        <hr>
+        <h5 class="card-title">{{ company.display_name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted mt-3">{{ company.address_detail}}</h6>
+        <p class="card-text text-muted">{{ company.city_name}}, {{ company.region_name}}, {{ company.zip_code}}
+        </p>
+    </div>
+</div>
+<div class="m-3 p-2" style="box-shadow: 2px 5px 8px #888888;">
+    <h1 class="text-center pt-3" style="color:#ff9018">Offer</h1>
+    <table class="table table-bordered mt-2">
+        <thead style="background-color: #ff9018; color:#ffffff">
+            <tr>
+                <th scope="col">Product 1 budget</th>
+                <th scope="col">Product 1 issuing value</th>
+                <th scope="col">Product 1 mailing value</th>
+                <th scope="col">Product 1 value</th>
+                <th scope="col">Product 2 budget</th>
+                <th scope="col">Product 2 issuing value</th>
+                <th scope="col">Product 2 mailing value</th>
+                <th scope="col">Product 2 value</th>
+                <th scope="col">Product 3 budget</th>
+                <th scope="col">Product 3 issuing value</th>
+                <th scope="col">Product 3 mailing value</th>
+                <th scope="col">Product 3 value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ offer.product_1_budget }}</td>
+                <td>{{ offer.product_1_issuing_value }}</td>
+                <td>{{ offer.product_1_mailing_value }}</td>
+                <td>{{ offer.product_1_value }}</td>
+                <td>{{ offer.product_2_budget }}</td>
+                <td>{{ offer.product_2_issuing_value }}</td>
+                <td>{{ offer.product_2_mailing_value }}</td>
+                <td>{{ offer.product_2_value }}</td>
+                <td>{{ offer.product_3_budget }}</td>
+                <td>{{ offer.product_3_issuing_value }}</td>
+                <td>{{ offer.product_3_mailing_value }}</td>
+                <td>{{ offer.product_3_value }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="m-3 p-2" style="box-shadow: 2px 5px 8px #888888;">
+    <h1 class="text-center pt-3" style="color:#ff9018">Company's employees</h1>
+    <table class="table table-bordered mt-2">
+        <thead style="background-color: #ff9018; color:#ffffff">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Phone number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for employee in employees %}
+                <td>{{ forloop.counter }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.fullname }}</td>
+                <td>{{ employee.phoneNumber }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
